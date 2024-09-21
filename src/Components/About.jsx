@@ -18,8 +18,7 @@ import React from "react";
  */
 import image from "../images/about2.jpg";
 import arrowSvg from "../images/down-arrow.svg";
-
-const imageAltText = "purple and blue abstract background";
+const imageAltText = "Image";
 
 /**
  * Sort description that expands on your title on the Home component.
@@ -52,8 +51,8 @@ const detailOrQuote =
 
 const About = () => {
 
-  const scrollToPortfolio = () => {
-    const aboutSection = document.querySelector("#portfolio");
+  const scrollToEducation = () => {
+    const aboutSection = document.querySelector("#education");
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
@@ -65,9 +64,9 @@ const About = () => {
       <div
         style={{
           backgroundColor: "rgba(255, 255, 255, 1)",
-          width: "65%",
-          padding: "4rem",
-          marginTop: "2rem",
+          width: "70%",
+          padding: "3rem",
+          marginTop: "1rem",
           margin: "3rem auto",
           textAlign: "center",
           color:"Black"
@@ -93,7 +92,7 @@ const About = () => {
         <p style={{ padding: "1rem 3rem 0" }}>{detailOrQuote}</p>
       </div>
       <div style={{ position: "absolute", bottom: "3rem", left: "50%" }}>
-      <img src={arrowSvg} style={{ height: "3rem", width: "3rem" }} onClick={scrollToPortfolio} alt={imageAltText} />
+      <img src={arrowSvg} style={{ height: "3rem", width: "3rem" }} onClick={scrollToEducation} alt={imageAltText} />
       </div>
     </section>
   );
