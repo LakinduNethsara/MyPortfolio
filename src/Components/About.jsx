@@ -16,7 +16,8 @@ import React from "react";
  * Need an image? Check out https://unsplash.com to download a image you
  * freely use on your site.
  */
-import image from "../images/motion-background.jpg";
+import image from "../images/about2.jpg";
+import arrowSvg from "../images/down-arrow.svg";
 
 const imageAltText = "purple and blue abstract background";
 
@@ -24,19 +25,21 @@ const imageAltText = "purple and blue abstract background";
  * Sort description that expands on your title on the Home component.
  */
 const description =
-  "I'm a UI/UX student studying at Barnett Technical University. I enjoy creating unique and simplistic user interfaces in creative ways.";
+  "Welcome to my portfolio! I’m an undergraduate at the Faculty of Technology, University of Ruhuna, pursuing a Bachelor of Information and Communication Technology degree. I’m passionate about full stack development and creating innovative solutions through technology. Explore my projects, experience, and skills as I continue to push the boundaries of software development and design. Let's build something amazing together!";
 
 /**
  * List of some of skills or technologies you work on, are learning,
  * passionate about, or enjoy,
  */
 const skillsList = [
-  "Web design",
-  "User experience",
-  "Inclusive design",
-  "Focus group testing",
-  "Mobile user interfaces",
-  "Graphic design",
+  "Web Development",
+  "Desktop Application Development",
+  "Frontend Development",
+  "Backend Development",
+  "Database Management",
+  "UI/UX Design",
+  "Version Control",
+
 ];
 
 /**
@@ -45,19 +48,29 @@ const skillsList = [
  * about you on a professional level.
  */
 const detailOrQuote =
-  "I am passionate about solving problems in new creative ways to drive innovation. By leveraging my UI/UX experience I continually look for new and better ways to make tech accessible by all.";
+  "I am passionate about solving problems in new creative ways to drive innovation. By leveraging my programming experience I continually look for new and better ways to make tech accessible by all.";
 
 const About = () => {
+
+  const scrollToPortfolio = () => {
+    const aboutSection = document.querySelector("#portfolio");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="padding" id="about">
-      <img className="background" src={image} alt={imageAltText} />
+      <img style={{ filter: 'brightness(65%)' }} className="background" src={image} alt={imageAltText} />
       <div
         style={{
-          backgroundColor: "white",
-          width: "50%",
+          backgroundColor: "rgba(255, 255, 255, 1)",
+          width: "65%",
           padding: "4rem",
+          marginTop: "2rem",
           margin: "3rem auto",
           textAlign: "center",
+          color:"Black"
         }}
       >
         <h2>About Myself</h2>
@@ -78,6 +91,9 @@ const About = () => {
         </ul>
         <hr />
         <p style={{ padding: "1rem 3rem 0" }}>{detailOrQuote}</p>
+      </div>
+      <div style={{ position: "absolute", bottom: "3rem", left: "50%" }}>
+      <img src={arrowSvg} style={{ height: "3rem", width: "3rem" }} onClick={scrollToPortfolio} alt={imageAltText} />
       </div>
     </section>
   );

@@ -31,28 +31,34 @@ const imageAltText = "desktop with books and laptop";
  */
 const projectList = [
   {
-    title: "10 Things To Know About Azure Static Web Apps 🎉",
+    title: "Marks Management System",
     description:
-      "Collaboration to create a beginner friendly article to help explain Azure Static Web Apps and tooling to get started.",
-    url: "https://dev.to/azure/10-things-to-know-about-azure-static-web-apps-3n4i",
+      'This project is for "Third Year Group Project" in my degree program. This is a web application that is developed for Faculty of Technology in University of Ruhuna to manage all the students marks as a replacement for the mannual marks processing workflow. There are two repositories for backend and frontend. Please reffer both the repositories to get the full idea of the project.',
+    url: "https://github.com/LakinduNethsara/mms-frontend",
   },
   {
-    title: "Web Development for Beginners",
+    title: "Pharmacy Management System",
     description:
-      "Contributed sketch note imagery to accompany each lesson. These help provide visual representation of what is being taught.",
-    url: "https://github.com/microsoft/web-dev-for-beginners",
-  },
-  {
-    title: "My Resume Site",
-    description:
-      "Created from Microsoft's resume workshop and deployed to GitHub pages. Includes my experience and design abilities.",
+      "This is a desktop application which was developed using Java programming Language and JavaFX library. This project was developed with remote medicine ordering feature and other key features to full fill the requirements of the 'Software Engineering' course module in my degree program.",
     url: "https://github.com/microsoft/workshop-library/tree/main/full/build-resume-website",
   },
   {
-    title: "GitHub Codespaces and github.dev",
+    title: "Karmikaya.lk",
     description:
-      "Video interview to explain when to use GitHub.dev versus GitHub Codespaces, and how best to use each tool.",
-    url: "https://www.youtube.com/watch?v=c3hHhRME_XI",
+      'This is an e-commerce web project which was developed under the "e-commere implimentation and managment security" course modul in my degree program. We developed a new idea as an e-commerce web project. At the same time, this is a group project.',
+    url: "https://github.com/LakinduNethsara/E-Commecre_Platform",
+  },
+  {
+    title: "TECMIS",
+    description:
+      "I developed a mini project using OOP concepts to fulfill the requirements of the 'Object Oriented Programming' course module in my degree program.",
+    url: "https://github.com/LakinduNethsara/OOP-Mini_Project",
+  },
+  {
+    title: "Bid-Zone",
+    description:
+      'This is a small and lite version of an online bidding system. This project was developped as an assignment for the "Advanced Programming" course module in my degree program. There are two repositories for backend and frontend. This is a group project.',
+    url: "https://github.com/LakinduNethsara/BidZone-frontend",
   },
 ];
 
