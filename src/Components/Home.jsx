@@ -37,7 +37,7 @@ const Home = ({ name, title }) => {
     <section id="home" className="min-height">
       <img style={{filter:'brightness(35%)'}} className="background" src={image} alt="" />
       <div style={{ position: "absolute", top: "7rem", left: "5rem", width: "17rem", color:"white" }}>
-        <h1>{name}</h1>
+        <h1>{name}</h1><br/>
         <h2>{title}</h2>
       </div>
 

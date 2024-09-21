@@ -64,10 +64,12 @@ const About = () => {
       <div
         style={{
           backgroundColor: "rgba(255, 255, 255, 1)",
-          width: "70%",
-          padding: "3rem",
-          marginTop: "1rem",
-          margin: "3rem auto",
+          width: "75%",
+          paddingLeft: "3rem",
+          paddingRight: "3rem",
+          paddingBottom: "3rem",
+          paddingTop: "1rem",
+          margin: "1rem auto 3rem auto",
           textAlign: "center",
           color:"Black"
         }}
