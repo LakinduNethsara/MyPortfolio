@@ -8,6 +8,7 @@
 import React from "react";
 import arrowSvg from "../images/down-arrow.svg";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 /**
  * Home background image
@@ -26,6 +27,19 @@ const imageAltText = "Adult female in office setting leaning against a glass wal
 
 const Home = ({ name, title }) => {
 
+  const [viewCount, setViewCount] = useState(0);
+
+  useEffect(() => {
+    // Retrieve the view count from localStorage, or initialize it to 0 if it doesn't exist
+    const currentViews = parseInt(localStorage.getItem("viewCount") || "0", 10);
+    const newViewCount = currentViews + 1;
+
+    // Update the view count in localStorage and the component state
+    localStorage.setItem("viewCount", newViewCount);
+    setViewCount(newViewCount);
+  }, []);
+
+
   const scrollToAbout = () => {
     const aboutSection = document.querySelector("#about");
     if (aboutSection) {
@@ -39,6 +53,7 @@ const Home = ({ name, title }) => {
       <div style={{ position: "absolute", top: "7rem", left: "5rem", width: "17rem", color:"white" }}>
         <h1>{name}</h1><br/>
         <h2>{title}</h2>
+        <p style={{ marginTop: "1rem" }}>Views: {viewCount}</p>
       </div>
 
       <div style={{ position: "absolute", bottom: "3rem", left: "50%" }}>
