@@ -1,0 +1,75 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class TCPClient {
+    public static void main(String[] args) {
+        try(Socket socket = new Socket("localhost",12)){
+            System.out.println("Client is started...");
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
+            BufferedReader cmd = new BufferedReader(new InputStreamReader(System.in));
+            String Message = null;
+            do{
+                System.out.println("Enter the Client Message: ");
+                Message=cmd.readLine();
+                out.println(Message);
+                System.out.println("Message is sent to the server...");
+                System.out.println("");
+                
+                Message = in.readLine();
+                System.out.println("Server says: "+Message);
+            
+            }while(!Message.equalsIgnoreCase("bye"));
+            
+        
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class TCPServer {
+    public static void main(String[] args) {
+        try(ServerSocket serverSocket = new ServerSocket(12)){
+            System.out.println("Server is started...");
+            
+            Socket socket = serverSocket.accept();
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
+            BufferedReader cmd = new BufferedReader(new InputStreamReader(System.in));
+            
+            System.out.println("Client is connected...");
+            
+            String Message=null;
+            
+            do{
+                Message = in.readLine();
+                System.out.println("Client sats: "+Message);
+                
+                System.out.println("Enter Server Message: ");
+                Message = cmd.readLine();
+                out.println(Message);
+                System.out.println("Message sent to the client...");
+                System.out.println("");
+                
+                
+            }while (!Message.equalsIgnoreCase("bye"));
+        
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+}

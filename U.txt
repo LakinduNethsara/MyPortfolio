@@ -1,0 +1,127 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+
+package UDP;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+/**
+ *
+ * @author Lakindu Nethsara
+ */
+public class UDPClient {
+    public static void main(String[] args) {
+        try{
+            
+            System.out.println("Client is starting...");
+            
+            DatagramSocket clientSocket =new DatagramSocket();
+            InetAddress serverAddress = InetAddress.getByName("localhost");
+            
+            Scanner scanner = new Scanner(System.in);
+            
+            byte[] recieveBuffer =new byte[1024];
+            byte[] sendBuffer;
+            
+            
+            while(true){
+            
+                System.out.println("Enter Client Message: ");
+                String clientMessage = scanner.nextLine();
+                
+                sendBuffer = clientMessage.getBytes();
+                
+                DatagramPacket sendPacket = new DatagramPacket(sendBuffer,sendBuffer.length,serverAddress,2500);
+                
+                clientSocket.send(sendPacket);
+                System.out.println("Message is sent to the server...");
+                
+                DatagramPacket recievePacket = new DatagramPacket(recieveBuffer,recieveBuffer.length);
+                clientSocket.receive(recievePacket);
+                
+                String serverMessage = new String(recievePacket.getData(),0,recievePacket.getLength());
+                
+                System.out.println("Server says: "+serverMessage);
+                
+                if(serverMessage.equalsIgnoreCase("Exit")){
+                    System.out.println("Client is shutting down...");
+                    break;
+                }
+                
+                
+            
+            }
+            
+            clientSocket.close();
+        
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+}
+
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package UDP;
+
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+/**
+ *
+ * @author Lakindu Nethsara
+ */
+public class UDPServer {
+    public static void main(String[] args) {
+        
+        try{
+            DatagramSocket serverSocket = new DatagramSocket(2500);
+            System.out.println("Server is running...");
+            
+            byte[] inputBuffer = new byte[1024];
+            byte[] outputBuffer;
+            Scanner scanner = new Scanner(System.in);
+            
+            while(true){
+                DatagramPacket recievePacket = new DatagramPacket(inputBuffer,inputBuffer.length);
+                serverSocket.receive(recievePacket);
+                
+                String recieveMessage = new String(recievePacket.getData(),0,recievePacket.getLength());
+                System.out.println("Client says: "+recieveMessage);
+                
+                InetAddress clientAddress = recievePacket.getAddress();
+                int port = recievePacket.getPort();
+                
+                System.out.println("Enter Server Message: ");
+                
+                String serverMessage = scanner.nextLine();
+                outputBuffer = serverMessage.getBytes();
+                
+                DatagramPacket sendPacket = new DatagramPacket(outputBuffer,outputBuffer.length,clientAddress,port);
+                serverSocket.send(sendPacket);
+                
+                
+                if( recieveMessage.equalsIgnoreCase("exit")){
+                    System.out.println("Server is shutting down...");
+                    break;
+                }
+            }
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+    }
+}
