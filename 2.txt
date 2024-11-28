@@ -1,0 +1,13 @@
+az webapp deployment user set --user-name name --password password
+az group create --name name --location westeurope
+az appservice list-locations --sku free
+az webservice plan create --name name --resource-group resourcegroup --sku b1 --is-linux
+az webapp create --name name --resource-group resourcegroup --plan appserviceplan --runtime "PHP|8.2" --deployment-local-git
+
+
+
+git remote add azure "https://lakindu@practical5-part2-web-app.scm.azurewebsites.net/practical5-part2-web-app.git"
+git push azure master 
+
+git commit -am "updates"
+git push azure master
